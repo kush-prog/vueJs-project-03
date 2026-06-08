@@ -55,6 +55,7 @@ const handleSearch = (payload: { location: string; activity: string; date: strin
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  padding-top: 2.5rem;
 }
 
 .main-content {
@@ -79,7 +80,18 @@ const handleSearch = (payload: { location: string; activity: string; date: strin
   z-index: 10;
 }
 
+@media (max-width: 1024px) {
+  .main-content {
+    padding-bottom: 4rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .main-content {
+    padding-top: 1rem;
+    padding-bottom: 3rem;
+  }
+
   .search-panel-wrapper {
     position: relative;
     transform: none;

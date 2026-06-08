@@ -18,18 +18,25 @@ defineProps<Props>();
 <template>
   <header class="navbar-container">
     <div class="navbar-wrapper container">
-      <a href="#" class="brand-logo">Entrada</a>
-      <nav class="nav-menu">
-        <ul class="nav-list">
-          <li v-for="(link, index) in links" :key="link.path" class="nav-item">
-            <a :href="`#${link.path}`" class="nav-link">{{ link.label }}</a>
-            <span v-if="index < links.length - 1" class="separator-dot">•</span>
-          </li>
-        </ul>
-        <button class="search-trigger" aria-label="Search site">
-          <BaseIcon name="search" size="18" />
-        </button>
-      </nav>
+      <div class="navbar-left">
+        <a href="#" class="brand-logo">Entrada</a>
+        <nav class="nav-menu">
+          <ul class="nav-list">
+            <li v-for="(link, index) in links" :key="link.path" class="nav-item">
+              <a :href="`#${link.path}`" class="nav-link">{{ link.label }}</a>
+              <span v-if="index < links.length - 1" class="separator-dot">•</span>
+            </li>
+          </ul>
+          <button class="search-trigger" aria-label="Search site">
+            <BaseIcon name="search" size="18" />
+          </button>
+        </nav>
+      </div>
+
+      <div class="auth-group">
+        <BaseButton variant="text" class="login-btn">Log in</BaseButton>
+        <BaseButton variant="solid" class="signup-btn">Sign up</BaseButton>
+      </div>
     </div>
   </header>
 </template>
@@ -48,19 +55,26 @@ defineProps<Props>();
   justify-content: space-between;
 }
 
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+  margin-left: 0.5rem;
+}
+
 .brand-logo {
   font-family: var(--font-display);
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 800;
   color: var(--color-dark);
   text-decoration: none;
-  letter-spacing: -0.5px;
+  letter-spacing: 1px;
 }
 
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.75rem;
 }
 
 .nav-list {
@@ -78,7 +92,7 @@ defineProps<Props>();
 
 .nav-link {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 1.25rem;
   font-weight: 500;
   color: var(--color-text-body);
   text-decoration: none;
@@ -91,7 +105,7 @@ defineProps<Props>();
 }
 
 .separator-dot {
-  font-size: 0.6rem;
+  font-size: 1rem;
   color: var(--color-text-muted);
   margin: 0 1rem;
   user-select: none;

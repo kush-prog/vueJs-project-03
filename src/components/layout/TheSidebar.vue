@@ -34,10 +34,9 @@ defineProps<Props>();
 <style scoped>
 .social-sidebar {
   position: absolute;
-  right: 0px;
+  right: -10rem;
   top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  transform-origin: right top;
+  transform: translateY(-50%) rotate(-90deg);
   z-index: 10;
   white-space: nowrap;
 }
@@ -50,7 +49,7 @@ defineProps<Props>();
 
 .social-link {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   color: var(--color-text-body);
   text-decoration: none;

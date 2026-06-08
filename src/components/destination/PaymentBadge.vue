@@ -5,7 +5,7 @@ import BaseIcon from '../ui/BaseIcon.vue';
 <template>
   <div class="payment-badge-container">
     <div class="icon-circle">
-      <BaseIcon name="payment" size="20" color="var(--color-dark)" />
+      <BaseIcon name="payment" size="26" color="var(--color-dark)" />
     </div>
     <div class="text-content">
       <p class="badge-text">
@@ -21,20 +21,20 @@ import BaseIcon from '../ui/BaseIcon.vue';
 .payment-badge-container {
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
-  max-width: 280px;
+  gap: 1.25rem;
+  max-width: 320px;
 }
 
 .icon-circle {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   background-color: var(--color-white);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 .text-content {
@@ -45,7 +45,7 @@ import BaseIcon from '../ui/BaseIcon.vue';
 
 .badge-text {
   font-family: var(--font-body);
-  font-size: 0.85rem;
+  font-size: 1.05rem;
   line-height: 1.4;
   color: var(--color-white);
   margin: 0;
@@ -54,7 +54,7 @@ import BaseIcon from '../ui/BaseIcon.vue';
 
 .book-now-link {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: var(--color-white);
   text-decoration: underline;

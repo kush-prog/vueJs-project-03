@@ -24,13 +24,20 @@ defineEmits<{
 </script>
 
 <template>
-  <Transition name="silde-fade" mode="out-in">
+  <Transition name="slide-fade" mode="out-in">
     <section class="hero-banner" :style="{ backgroundImage: `url(${destination.imageUrl})` }">
       <div class="hero-overlay"></div>
       <div class="hero-content">
-        <HeroDetails :title="destination.title" :subtitle="destination.subtitle" :temperature="destination.temperature"
-          :weather-status="destination.weatherStatus" @prev="$emit('prev')" @next="$emit('next')" />
-        <PaymentBadge />
+        <HeroDetails 
+          :title="destination.title" 
+          :subtitle="destination.subtitle" 
+          :temperature="destination.temperature"
+          :weather-status="destination.weatherStatus" 
+          @prev="$emit('prev')" 
+          @next="$emit('next')" />
+        <div class="payment-badge-wrapper">
+          <PaymentBadge />
+        </div>
       </div>
     </section>
   </Transition>
@@ -47,7 +54,7 @@ defineEmits<{
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  padding: 4rem;
+  padding: 4rem 4rem 8rem 4rem;
   transition: background-image 0.5s ease-in-out;
 }
 
@@ -93,13 +100,17 @@ defineEmits<{
   }
 }
 
-.clide-fade-enter-active,
+.payment-badge-wrapper {
+  margin-left: auto;
+}
+
+.slide-fade-enter-active,
 .slide-fade-leave-active {
   transition: opacity 0.4s ease, filter 0.4s ease;
 }
 
 .slide-fade-enter-from,
-.silde-fade-leave-to {
+.slide-fade-leave-to {
   opacity: 0;
   filter: blur(8px);
 }
