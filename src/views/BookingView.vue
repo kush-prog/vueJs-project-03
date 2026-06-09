@@ -98,9 +98,6 @@ const resetForm = () => {
 
 <template>
   <div class="bookings-view">
-    <div class="bg-glow glow-teal"></div>
-    <div class="bg-glow glow-amber"></div>
-
     <TheNavbar :links="NAVIGATION_LINKS" />
 
     <main class="main-content container">
@@ -375,7 +372,9 @@ const resetForm = () => {
   font-family: var(--font-display);
   font-size: 3rem;
   font-weight: 800;
-  color: var(--color-dark);
+  background: linear-gradient(135deg, var(--color-dark) 40%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin: 0;
 }
 
@@ -387,10 +386,13 @@ const resetForm = () => {
 }
 
 .checkout-form-container {
-  background-color: var(--color-white);
+  background-color: rgba(4, 5, 6, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-panel);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 3rem;
+  animation: fadeInUp 0.6s ease backwards;
 }
 
 .section-title {
@@ -447,13 +449,18 @@ const resetForm = () => {
 .form-input:focus,
 .form-select:focus {
   border-color: var(--color-primary);
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.04);
   box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+.form-select option {
+  background-color: #040608;
+  color: var(--color-text-body);
 }
 
 .input-error {
   border-color: #ff4d4f;
-  background-color: #fff2f0;
+  background-color: rgba(255, 77, 79, 0.08);
 }
 
 .error-msg {
@@ -475,7 +482,7 @@ const resetForm = () => {
 }
 
 .counter-btn {
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--color-border);
   border-radius: 8px;
   width: 32px;
@@ -576,11 +583,12 @@ const resetForm = () => {
 }
 
 .invoice-card {
-  background-color: var(--color-dark);
+  background-color: rgba(4, 5, 6, 0.95);
   border-radius: var(--radius-panel);
   overflow: hidden;
   box-shadow: var(--shadow-panel);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  animation: fadeInUp 0.6s ease 0.15s backwards;
 }
 
 .invoice-dest-image {
@@ -695,13 +703,16 @@ const resetForm = () => {
 }
 
 .success-screen {
-  background-color: var(--color-white);
+  background-color: rgba(4, 5, 6, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: var(--radius-panel);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   padding: 4rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  animation: fadeInUp 0.6s ease backwards;
 }
 
 .success-card {
@@ -779,30 +790,7 @@ const resetForm = () => {
   font-weight: 750 !important;
 }
 
-.bg-glow {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(130px);
-  z-index: 0;
-  pointer-events: none;
-  opacity: 0.45;
-}
 
-.glow-teal {
-  top: 5%;
-  left: -150px;
-  width: 500px;
-  height: 500px;
-  background-color: var(--color-primary);
-}
-
-.glow-amber {
-  bottom: 10%;
-  right: -150px;
-  width: 450px;
-  height: 450px;
-  background-color: #f5a623;
-}
 
 @media (max-width: 992px) {
   .checkout-grid {
@@ -841,6 +829,17 @@ const resetForm = () => {
   .addon-item {
     padding: 1rem;
     gap: 0.75rem;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

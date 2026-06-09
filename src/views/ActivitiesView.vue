@@ -85,7 +85,7 @@ const filteredActivities = computed(() => {
                 </div>
 
                 <div class="activities-content-grid">
-                    <div v-for="act in filteredActivities" :key="act.id" class="activity-card">
+                    <div v-for="(act, index) in filteredActivities" :key="act.id" class="activity-card" :style="{ animationDelay: `${index * 0.15}s` }">
                         <div class="activity-image" :style="{ backgroundImage: `url(${act.imageUrl})` }">
                             <div class="badge-row">
                                 <span class="badge-pill rating-badge">⭐ {{ act.rating }}</span>
@@ -164,7 +164,9 @@ const filteredActivities = computed(() => {
     font-family: var(--font-display);
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 800;
-    color: var(--color-dark);
+    background: linear-gradient(135deg, var(--color-dark) 40%, var(--color-primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     line-height: 1.2;
 }
 
@@ -208,16 +210,24 @@ const filteredActivities = computed(() => {
 .activity-card {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-white);
+    background-color: rgba(4, 5, 6, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border-radius: var(--radius-panel);
-    border: 1px solid var(--color-border);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: fadeInUp 0.6s ease backwards;
 }
 
 .activity-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-panel);
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(26, 176, 166, 0.15);
+    border-color: rgba(26, 176, 166, 0.3);
+}
+
+.activity-card:hover .activity-image {
+    transform: scale(1.06);
 }
 
 .activity-image {
@@ -226,6 +236,7 @@ const filteredActivities = computed(() => {
     background-position: center;
     position: relative;
     padding: 1rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .badge-row {
@@ -330,6 +341,17 @@ const filteredActivities = computed(() => {
 
     .activities-content-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 </style>

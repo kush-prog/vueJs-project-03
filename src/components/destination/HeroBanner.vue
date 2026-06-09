@@ -47,15 +47,16 @@ defineEmits<{
 .hero-banner {
   position: relative;
   width: 100%;
-  height: 550px;
+  height: 640px;
   border-radius: var(--radius-hero);
   background-size: cover;
   background-position: center;
   overflow: hidden;
   display: flex;
   align-items: flex-end;
-  padding: 4rem 4rem 8rem 4rem;
-  transition: background-image 0.5s ease-in-out;
+  padding: 5rem 4rem 10rem 4rem;
+  transition: background-image 0.6s ease-in-out;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
 .hero-overlay {
@@ -65,8 +66,10 @@ defineEmits<{
   right: 0;
   bottom: 0;
   background: linear-gradient(to bottom,
-      rgba(18, 22, 25, 0.2) 0%,
-      rgba(18, 22, 25, 0.5) 100%);
+      rgba(3, 5, 6, 0.75) 0%,
+      rgba(3, 5, 6, 0.1) 35%,
+      rgba(3, 5, 6, 0.15) 65%,
+      rgba(3, 5, 6, 0.9) 100%);
   z-index: 1;
 }
 

@@ -5,7 +5,7 @@ import BaseIcon from '../ui/BaseIcon.vue';
 <template>
   <div class="payment-badge-container">
     <div class="icon-circle">
-      <BaseIcon name="payment" size="26" color="var(--color-dark)" />
+      <BaseIcon name="payment" size="26" color="var(--color-primary)" />
     </div>
     <div class="text-content">
       <p class="badge-text">
@@ -28,13 +28,14 @@ import BaseIcon from '../ui/BaseIcon.vue';
 .icon-circle {
   width: 56px;
   height: 56px;
-  background-color: var(--color-white);
+  background-color: rgba(26, 176, 166, 0.12);
+  border: 1px solid rgba(26, 176, 166, 0.25);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(26, 176, 166, 0.2);
 }
 
 .text-content {

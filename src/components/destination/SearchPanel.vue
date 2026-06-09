@@ -20,7 +20,7 @@ const handleSearch = () => {
 </script>
 
 <template>
-  <div class="search-panel">
+  <div class="search-panel" role="search" aria-label="Search trips">
     <div class="search-field">
       <div class="field-info">
         <label for="location" class="field-label">Location</label>
@@ -32,25 +32,25 @@ const handleSearch = () => {
           class="field-input"
         />
       </div>
-      <BaseIcon name="pin" size="18" class="field-icon" color="var(--color-text-muted)" />
+      <BaseIcon name="pin" size="18" class="field-icon" color="rgba(255, 255, 255, 0.4)" />
     </div>
 
-    <div class="field-divider"></div>
+    <div class="field-divider" aria-hidden="true"></div>
 
     <div class="search-field">
       <div class="field-info">
         <label for="activity" class="field-label">Activity</label>
-        <select id="activity" v-model="activity" class="field-select">
+        <select id="activity" v-model="activity" class="field-select" aria-label="Select activity">
           <option value="">Bungee Jump</option>
           <option value="trekking">Trekking</option>
           <option value="rafting">River Rafting</option>
           <option value="sightseeing">Sightseeing</option>
         </select>
       </div>
-      <BaseIcon name="chevron-down" size="18" class="field-icon" color="var(--color-text-muted)" />
+      <BaseIcon name="chevron-down" size="18" class="field-icon" color="rgba(255, 255, 255, 0.4)" />
     </div>
 
-    <div class="field-divider"></div>
+    <div class="field-divider" aria-hidden="true"></div>
 
     <div class="search-field">
       <div class="field-info">
@@ -65,7 +65,7 @@ const handleSearch = () => {
           class="field-input"
         />
       </div>
-      <BaseIcon name="calendar" size="18" class="field-icon" color="var(--color-text-muted)" />
+      <BaseIcon name="calendar" size="18" class="field-icon" color="rgba(255, 255, 255, 0.4)" />
     </div>
 
     <button class="search-button" aria-label="Search destinations" @click="handleSearch">
@@ -78,16 +78,34 @@ const handleSearch = () => {
 .search-panel {
   display: flex;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(18, 22, 25, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-panel);
-  box-shadow: var(--shadow-panel);
-  padding: 1.25rem 1.75rem;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 1.1rem 1.5rem;
   width: 90%;
   max-width: 860px;
   margin: 0 auto;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: float-panel 6s ease-in-out infinite;
+}
+
+@keyframes float-panel {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0); }
+}
+
+.search-panel:hover {
+  box-shadow: 
+    0 40px 80px rgba(26, 176, 166, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-color: rgba(26, 176, 166, 0.4);
+  background-color: rgba(18, 22, 25, 0.55);
 }
 
 .search-field {
@@ -96,10 +114,11 @@ const handleSearch = () => {
   justify-content: space-between;
   flex: 1;
   padding: 0 1.5rem;
+  position: relative;
 }
 
 .search-field:first-of-type {
-  padding-left: 0;
+  padding-left: 0.5rem;
 }
 
 .field-info {
@@ -110,10 +129,12 @@ const handleSearch = () => {
 
 .field-label {
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-dark);
-  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.45);
+  margin-bottom: 0.3rem;
   display: block;
 }
 
@@ -122,53 +143,74 @@ const handleSearch = () => {
   background: transparent;
   outline: none;
   font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--color-text-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-white);
   width: 100%;
   padding: 0;
   cursor: pointer;
+  transition: color 0.2s;
 }
 
 .field-input::placeholder {
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.35);
 }
 
 .field-select {
   appearance: none;
 }
 
+.field-select option {
+  background-color: #121619;
+  color: var(--color-white);
+  padding: 0.5rem;
+}
+
 .field-icon {
-  margin-left: 1rem;
+  margin-left: 0.75rem;
+  transition: color 0.2s;
+}
+
+.search-field:focus-within .field-icon {
+  color: var(--color-primary) !important;
 }
 
 .field-divider {
   width: 1px;
-  height: 40px;
-  background-color: var(--color-border);
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.08);
   flex-shrink: 0;
 }
 
 .search-button {
-  width: 56px;
-  height: 56px;
+  width: 54px;
+  height: 54px;
   background-color: var(--color-primary);
   border: none;
-  border-radius: 16px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.2s, transform 0.1s;
-  margin-left: 1rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-left: 0.5rem;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(26, 176, 166, 0.3);
 }
 
 .search-button:hover {
   background-color: var(--color-primary-hover);
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(26, 176, 166, 0.5);
 }
 
 .search-button:active {
   transform: scale(0.95);
+}
+
+.search-button:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 @media (max-width: 768px) {
@@ -176,13 +218,18 @@ const handleSearch = () => {
     flex-direction: column;
     width: 100%;
     padding: 1.5rem;
-    gap: 1.25rem;
+    gap: 1rem;
+    animation: none; /* Disable floating on mobile for stability */
   }
 
   .search-field {
     width: 100%;
-    padding: 0 0 1rem 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: 0 0 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .search-field:first-of-type {
+    padding-left: 0;
   }
 
   .field-divider {

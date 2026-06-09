@@ -60,9 +60,10 @@ const filteredDestinations = computed(() => {
 
         <div class="destinations-content-grid">
           <div 
-            v-for="dest in filteredDestinations" 
+            v-for="(dest, index) in filteredDestinations" 
             :key="dest.id" 
             class="dest-card"
+            :style="{ animationDelay: `${index * 0.15}s` }"
           >
             <div 
               :class="['dest-image', { 'no-image': !dest.cardImageUrl }]"
@@ -141,7 +142,9 @@ const filteredDestinations = computed(() => {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
-  color: var(--color-dark);
+  background: linear-gradient(135deg, var(--color-dark) 40%, var(--color-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   line-height: 1.2;
 }
 
@@ -188,7 +191,7 @@ const filteredDestinations = computed(() => {
 
 .filter-btn {
   border: 1px solid var(--color-border);
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.02);
   color: var(--color-text-body);
   padding: 0.6rem 1.2rem;
   border-radius: var(--radius-pill);
@@ -202,6 +205,7 @@ const filteredDestinations = computed(() => {
 .filter-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
+  background-color: rgba(26, 176, 166, 0.08);
 }
 
 .filter-btn.active {
@@ -220,16 +224,23 @@ const filteredDestinations = computed(() => {
 .dest-card {
   display: flex;
   flex-direction: column;
-  background-color: var(--color-white);
-  border-radius: var(--radius-panel);
-  border: 1px solid var(--color-border);
+  background-color: rgba(4, 5, 6, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeInUp 0.6s ease backwards;
 }
 
 .dest-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-panel);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(26, 176, 166, 0.15);
+  border-color: rgba(26, 176, 166, 0.3);
+}
+
+.dest-card:hover .dest-image {
+  transform: scale(1.06);
 }
 
 .dest-image {
@@ -238,6 +249,7 @@ const filteredDestinations = computed(() => {
   background-position: center;
   position: relative;
   padding: 1rem;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .dest-badge {
@@ -340,6 +352,17 @@ const filteredDestinations = computed(() => {
 
   .destinations-content-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>

@@ -5,14 +5,14 @@
 
   --color-primary: #1ab0a6;         
   --color-primary-hover: #15948c;  
-  --color-primary-light: #e8f7f6;   
+  --color-primary-light: rgba(26, 176, 166, 0.12);   
   
-  --color-dark: #121619;           
-  --color-text-body: #4a4e51;        
-  --color-text-muted: #8e9497;       
-  --color-border: #e8ebec;           
+  --color-dark: #ffffff;           
+  --color-text-body: #cbd5e1;        
+  --color-text-muted: #64748b;       
+  --color-border: rgba(255, 255, 255, 0.05);           
   --color-white: #ffffff;
-  --color-bg-light: #f8f9fa;         
+  --color-bg-light: rgba(255, 255, 255, 0.02);         
 
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -22,7 +22,7 @@
   --radius-btn: 12px;               
   --radius-pill: 9999px;             
 
-  --shadow-panel: 0 20px 50px rgba(18, 22, 25, 0.08); 
+  --shadow-panel: 0 20px 50px rgba(0, 0, 0, 0.5); 
   --shadow-btn: 0 4px 12px rgba(26, 176, 166, 0.2);  
   
   --container-max-width: 1240px;
@@ -32,7 +32,9 @@
 body {
   font-family: var(--font-body);
   color: var(--color-text-body);
-  background-color: #f5f7fa;
+  background: radial-gradient(circle at 0% 0%, rgba(30, 45, 180, 0.16) 0%, transparent 45%),
+              radial-gradient(circle at 100% 100%, rgba(8, 80, 60, 0.15) 0%, transparent 45%),
+              #030506;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -52,6 +54,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 100vh;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 .container {
@@ -60,4 +63,43 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
   width: 100%;
+}
+
+.bg-glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.glow-teal {
+  top: -10%;
+  left: -10%;
+  width: 550px;
+  height: 550px;
+  background-color: rgba(30, 45, 180, 0.16);
+  animation: float-teal 18s ease-in-out infinite alternate;
+}
+
+.glow-amber {
+  bottom: -10%;
+  right: -10%;
+  width: 550px;
+  height: 550px;
+  background-color: rgba(8, 80, 60, 0.15);
+  animation: float-amber 22s ease-in-out infinite alternate;
+}
+
+@keyframes float-teal {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 40px) scale(1.15); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes float-amber {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-50px, -60px) scale(0.85); }
+  100% { transform: translate(0, 0) scale(1); }
 }
