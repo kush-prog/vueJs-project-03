@@ -195,6 +195,7 @@ const handleSearch = (payload: { location: string; activity: string; date: strin
   font-weight: 800;
   background: linear-gradient(135deg, var(--color-primary) 30%, #4ae5db 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
   margin-bottom: 0.5rem;

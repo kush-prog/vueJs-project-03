@@ -94,6 +94,7 @@ const navigateTo = (hash: string) => {
   letter-spacing: 0.5px;
   background: linear-gradient(135deg, #ffffff 50%, var(--color-primary) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   transition: opacity 0.2s;
 }
