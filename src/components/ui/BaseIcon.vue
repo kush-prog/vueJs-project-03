@@ -1,5 +1,5 @@
 <script setup lang="ts">
-type IconName = 'search' | 'arrow-left' | 'arrow-right' | 'payment' | 'pin' | 'chevron-down' | 'calendar';
+type IconName = 'search' | 'arrow-left' | 'arrow-right' | 'payment' | 'pin' | 'chevron-down' | 'calendar' | 'check' | 'minus' | 'plus';
 
 interface Props {
   name: IconName;
@@ -12,7 +12,6 @@ withDefaults(defineProps<Props>(), {
   color: 'currentColor'
 });
 </script>
-
 
 <template>
   <svg
@@ -29,7 +28,6 @@ withDefaults(defineProps<Props>(), {
     role="presentation"
     aria-hidden="true"
   >
-    <!-- Dynamic SVG Path Rendering -->
     <g v-if="name === 'search'">
       <circle cx="11" cy="11" r="8" />
       <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -67,9 +65,21 @@ withDefaults(defineProps<Props>(), {
       <line x1="6" y1="15" x2="10" y2="15" />
       <line x1="14" y1="15" x2="18" y2="15" />
     </g>
+
+    <g v-else-if="name === 'check'">
+      <polyline points="20 6 9 17 4 12" />
+    </g>
+
+    <g v-else-if="name === 'minus'">
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </g>
+
+    <g v-else-if="name === 'plus'">
+      <line x1="12" y1="5" x2="12" y2="19" />
+      <line x1="5" y1="12" x2="19" y2="12" />
+    </g>
   </svg>
 </template>
-
 
 <style scoped>
 .base-icon {
@@ -78,5 +88,3 @@ withDefaults(defineProps<Props>(), {
   flex-shrink: 0;
 }
 </style>
-
-

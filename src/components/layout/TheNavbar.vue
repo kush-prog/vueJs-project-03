@@ -44,9 +44,14 @@ defineProps<Props>();
 <style scoped>
 .navbar-container {
   width: 100%;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.02);
+  border-bottom: 1px solid rgba(18, 22, 25, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .navbar-wrapper {

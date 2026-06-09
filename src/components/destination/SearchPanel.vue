@@ -78,7 +78,10 @@ const handleSearch = () => {
 .search-panel {
   display: flex;
   align-items: center;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: var(--radius-panel);
   box-shadow: var(--shadow-panel);
   padding: 1.25rem 1.75rem;

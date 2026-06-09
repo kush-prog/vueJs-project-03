@@ -1,44 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
 @import './base.css';
 
-/* Premium Design System Tokens */
 :root {
-  /* Colors */
-  --color-primary: #1ab0a6;          /* Bright visual teal/cyan accent */
-  --color-primary-hover: #15948c;    /* Deep teal for hover effects */
-  --color-primary-light: #e8f7f6;   /* Soft background tint of teal */
-  
-  --color-dark: #121619;             /* Premium dark charcoal for headings/active links */
-  --color-text-body: #4a4e51;        /* Dark gray for readable body copy */
-  --color-text-muted: #8e9497;       /* Muted gray for labels and placeholder text */
-  --color-border: #e8ebec;           /* Soft border lines */
-  --color-white: #ffffff;
-  --color-bg-light: #f8f9fa;         /* Secondary soft gray/white background */
 
-  /* Typography */
+  --color-primary: #1ab0a6;         
+  --color-primary-hover: #15948c;  
+  --color-primary-light: #e8f7f6;   
+  
+  --color-dark: #121619;           
+  --color-text-body: #4a4e51;        
+  --color-text-muted: #8e9497;       
+  --color-border: #e8ebec;           
+  --color-white: #ffffff;
+  --color-bg-light: #f8f9fa;         
+
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* Border Radii */
-  --radius-hero: 40px;               /* Large rounded corners for main banner */
-  --radius-panel: 24px;              /* High radius for search panel and cards */
-  --radius-btn: 12px;                /* Moderately rounded UI buttons */
-  --radius-pill: 9999px;             /* Fully rounded capsules (e.g. Sign up button) */
+  --radius-hero: 40px;  
+  --radius-panel: 24px;             
+  --radius-btn: 12px;               
+  --radius-pill: 9999px;             
 
-  /* Shadows */
-  --shadow-panel: 0 20px 50px rgba(18, 22, 25, 0.08); /* Soft floating shadow for search bar */
-  --shadow-btn: 0 4px 12px rgba(26, 176, 166, 0.2);   /* Soft colored glow for primary button */
+  --shadow-panel: 0 20px 50px rgba(18, 22, 25, 0.08); 
+  --shadow-btn: 0 4px 12px rgba(26, 176, 166, 0.2);  
   
-  /* Layout Constraints */
   --container-max-width: 1240px;
   --container-padding: 2rem;
 }
 
-/* Base resets & typography defaults */
 body {
   font-family: var(--font-body);
   color: var(--color-text-body);
-  background-color: var(--color-white);
+  background-color: #f5f7fa;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -60,7 +54,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-/* Custom utility classes */
 .container {
   max-width: var(--container-max-width);
   margin: 0 auto;

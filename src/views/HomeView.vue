@@ -29,6 +29,9 @@ const handleSearch = (payload: { location: string; activity: string; date: strin
 
 <template>
   <div class="home-view">
+    <div class="bg-glow glow-teal"></div>
+    <div class="bg-glow glow-amber"></div>
+
     <TheNavbar :links="NAVIGATION_LINKS" />
 
     <main class="main-content container">
@@ -48,6 +51,7 @@ const handleSearch = (payload: { location: string; activity: string; date: strin
     </main>
   </div>
 </template>
+
 
 <style scoped>
 .home-view {
@@ -98,5 +102,30 @@ const handleSearch = (payload: { location: string; activity: string; date: strin
     margin-top: 2rem;
     width: 100%;
   }
+}
+
+.bg-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(130px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.glow-teal {
+  top: 10%;
+  left: -100px;
+  width: 450px;
+  height: 450px;
+  background-color: var(--color-primary);
+}
+
+.glow-amber {
+  bottom: 15%;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  background-color: #f5a623;
 }
 </style>
